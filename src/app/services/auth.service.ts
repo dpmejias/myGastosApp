@@ -17,7 +17,7 @@ export class AuthService {
     this.auth.authState.subscribe( fuser => {
       console.log(fuser);
       console.log(fuser?.uid);
-      console.log(fuser?.email);
+      // console.log(fuser?.email);
     });
   }
 

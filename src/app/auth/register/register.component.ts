@@ -42,7 +42,7 @@ export class RegisterComponent implements OnInit {
     this.authService
       .crearUsuario(usuario, correo, password)
       .then((credenciales) => {
-        console.log(credenciales);
+        // console.log(credenciales);
         Swal.close();
         this.router.navigate(['/']);
       })
