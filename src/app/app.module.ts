@@ -12,9 +12,7 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 
-// import { provideFirestore, getFirestore } from '@angular/fire/firestore';
-// import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-// import { provideAuth,getAuth } from '@angular/fire/auth';
+import { NgChartsModule } from 'ng2-charts';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -30,6 +28,7 @@ import { DetalleComponent } from './my-gastos/detalle/detalle.component';
 import { FooterComponent } from './shared/footer/footer.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { OrdenTesoreriaPipe } from './pipes/orden-tesoreria.pipe';
 
 @NgModule({
   declarations: [
@@ -43,6 +42,7 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     FooterComponent,
     SidebarComponent,
     NavbarComponent,
+    OrdenTesoreriaPipe,
   ],
   imports: [
     BrowserModule,
@@ -54,11 +54,9 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
     StoreModule.forRoot(appReducers),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
-      logOnly: environment.production
-    })
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideAuth(() => getAuth()),
-    // provideFirestore(() => getFirestore())
+      logOnly: environment.production,
+    }),
+    NgChartsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

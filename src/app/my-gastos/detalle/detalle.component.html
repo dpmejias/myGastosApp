@@ -15,11 +15,19 @@
               </thead>
 
               <tbody>
-                <tr>
-                  <td>Descripción</td>
-                  <td>Monto</td>
-                  <td>Tipo</td>
-                  <td>acciones</td>
+                <tr *ngFor="let tes of tesoreria | ordenTesoreria">
+                  <td> {{ tes.descripcion }} </td>
+                  <td> {{ tes.monto | currency }} </td>
+                  <td  [class.text-success]="tes.tipo === 'ingreso'"
+                        [class.text-danger]="tes.tipo === 'egreso'"> 
+                    {{ tes.tipo }} 
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-danger"
+                            (click)="borrar( tes.uid )">
+                      <i class="fa fa-trash"></i>
+                    </button>
+                  </td>
                 </tr>
               </tbody>
 
