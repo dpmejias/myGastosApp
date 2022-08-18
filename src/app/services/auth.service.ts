@@ -44,9 +44,9 @@ export class AuthService {
           });
         } else {
           this._usuario = null;
-          this.userSubs.unsubscribe();
-          this.store.dispatch(authActions.unSetUser());
+          this.userSubs?.unsubscribe();
           this.store.dispatch(ieActions.unSetItems());
+          this.store.dispatch(authActions.unSetUser());
       }
     });
   }

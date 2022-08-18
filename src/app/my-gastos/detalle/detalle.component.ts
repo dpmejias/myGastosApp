@@ -8,23 +8,26 @@ import { IngresoEgresoService } from 'src/app/services/ingreso-egreso.service';
 import { Subscription } from 'rxjs';
 
 import Swal from 'sweetalert2';
+import { AppStateWithMyGastos } from '../my-gastos.reducer';
 
 @Component({
   selector: 'app-detalle',
   templateUrl: './detalle.component.html',
-  styles: [
-  ]
+  styles: [],
 })
 export class DetalleComponent implements OnInit, OnDestroy {
-
   tesoreria: IngresoEgreso[] = [];
   tesoreriaSubs: Subscription;
 
-  constructor(private store: Store<AppState>,
-              private ieService: IngresoEgresoService) { }
+  constructor(
+    private store: Store<AppStateWithMyGastos>,
+    private ieService: IngresoEgresoService
+  ) {}
 
   ngOnInit(): void {
-    this.tesoreriaSubs = this.store.select('ingEgr').subscribe(({ items }) => this.tesoreria = [...items]);
+    this.tesoreriaSubs = this.store
+      .select('ingEgr')
+      .subscribe(({ items }) => (this.tesoreria = [...items]));
   }
 
   ngOnDestroy(): void {
@@ -33,7 +36,7 @@ export class DetalleComponent implements OnInit, OnDestroy {
 
   borrar(uid: string) {
     let ieData: IngresoEgreso;
-    this.tesoreria.find(filt => {
+    this.tesoreria.find((filt) => {
       if (filt.uid === uid) {
         ieData = filt;
       }
@@ -50,5 +53,4 @@ export class DetalleComponent implements OnInit, OnDestroy {
       )
       .catch((err) => Swal.fire('Error!', err.message, 'error'));
   }
-
 }

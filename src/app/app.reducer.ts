@@ -6,11 +6,11 @@ import * as tesoreria from './my-gastos/my-gastos.reducer';
 export interface AppState {
    ui: ui.State,
    user: auth.State,
-   ingEgr: tesoreria.State
+   // ingEgr: tesoreria.State
 }
 
 export const appReducers: ActionReducerMap<AppState> = {
    ui: ui.uiReducer,
    user: auth.authReducer,
-   ingEgr: tesoreria.myGastosReducer
+   // ingEgr: tesoreria.myGastosReducer
 }

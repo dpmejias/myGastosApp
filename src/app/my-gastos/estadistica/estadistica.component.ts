@@ -5,6 +5,7 @@ import { AppState } from 'src/app/app.reducer';
 import { IngresoEgreso } from 'src/app/models/ingreso-egreso.model';
 
 import { ChartData, ChartEvent } from 'chart.js';
+import { AppStateWithMyGastos } from '../my-gastos.reducer';
 
 @Component({
   selector: 'app-estadistica',
@@ -21,12 +22,10 @@ export class EstadisticaComponent implements OnInit {
   public doughnutChartLabels: string[] = ['Ingresos', 'Egresos'];
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: this.doughnutChartLabels,
-    datasets: [
-      { data: [] }
-    ],
+    datasets: [{ data: [] }],
   };
 
-  constructor(private store: Store<AppState>) {}
+  constructor(private store: Store<AppStateWithMyGastos>) {}
 
   ngOnInit(): void {
     this.store
@@ -49,6 +48,8 @@ export class EstadisticaComponent implements OnInit {
       }
     }
 
-    this.doughnutChartData.datasets.push({data: [this.totalIngresos, this.totalEgresos]});
+    this.doughnutChartData.datasets.push({
+      data: [this.totalIngresos, this.totalEgresos],
+    });
   }
 }

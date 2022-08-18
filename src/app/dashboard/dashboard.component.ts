@@ -7,7 +7,6 @@ import * as ieActions from '../my-gastos/my-gastos.actions';
 import { filter, Subscription } from 'rxjs';
 
 import { IngresoEgresoService } from '../services/ingreso-egreso.service';
-import { IngresoEgreso } from '../models/ingreso-egreso.model';
 
 @Component({
   selector: 'app-dashboard',
@@ -37,8 +36,8 @@ export class DashboardComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.ieSubs.unsubscribe();
-    this.userSubs.unsubscribe();
+    this.ieSubs?.unsubscribe();
+    this.userSubs?.unsubscribe();
   }
 
 }
